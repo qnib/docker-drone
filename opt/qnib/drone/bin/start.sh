@@ -2,4 +2,4 @@
 
 env > /root/env
 
-tail -f /dev/null
+/usr/bin/drone server
