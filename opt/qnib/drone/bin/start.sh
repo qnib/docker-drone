@@ -2,4 +2,4 @@
 
 env > /root/env
 
-/usr/bin/drone server
+/usr/bin/drone ${QNIB_DRONE_TYPE}

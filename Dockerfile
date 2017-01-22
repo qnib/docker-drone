@@ -2,7 +2,8 @@ FROM qnib/alplain-init
 
 ENV DRONE_DATABASE_DRIVER=sqlite3 \
     DRONE_GITHUB=true \
-    DRONE_OPEN=true
+    DRONE_OPEN=true \
+    QNIB_DRONE_TYPE=server
 ADD opt/qnib/entry/10-docker-secrets.env /opt/qnib/entry/
 ADD opt/qnib/drone/bin/start.sh /opt/qnib/drone/bin/
 RUN echo 'hosts: files mdns4_minimal [NOTFOUND=return] dns mdns4' >> /etc/nsswitch.conf
