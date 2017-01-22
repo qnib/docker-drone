@@ -1,0 +1,25 @@
+version: '3'
+services:
+  server:
+    image: qnib/drone
+    ports:
+      - 8000:8000
+    volumes:
+      - /var/lib/:/var/lib/
+    environment:
+      - DRONE_ADMIN=qnib
+      - DRONE_GITHUB=true
+      - DRONE_GITHUB_CLIENT=fillme
+      - DRONE_GITHUB_SECRET=fillme
+      - DRONE_SECRET=mySecret
+      - DRONE_CACHE_TTY=30m
+      - DRONE_DATABASE_DATASOURCE=/var/lib/drone.sqlite
+
+  agent:
+    image: qnib/drone
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - DRONE_SERVER=ws://drone_server:8000/ws/broker
+      - DRONE_SECRET=mySecret
+      - QNIB_DRONE_TYPE=agent
